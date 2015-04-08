@@ -1,0 +1,24 @@
+{
+  "name": "assload",
+  "version": "1.0.0",
+  "description": "Promise based DOM asset loader",
+  "main": "index.js",
+  "dependencies": {
+    "nodeunit": "^0.9.1",
+    "nodeunit-b": "^4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/declaneugeneleekennedy/assload.git"
+  },
+  "author": "Declan Kennedy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/declaneugeneleekennedy/assload/issues"
+  },
+  "homepage": "https://github.com/declaneugeneleekennedy/assload"
+}
