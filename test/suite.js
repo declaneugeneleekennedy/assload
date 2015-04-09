@@ -26,14 +26,14 @@ this.suite = {
         var ass = new AssLoad();
         
         ass.addCss('https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css')
-                .then(function() {
-                    test.ok(true, 'This promise should be resolved');
-                });
+            .then(function() {
+                test.ok(true, 'This promise should be resolved');
+            });
                 
         ass.addCss('https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.404.css')
-                .fail(function() {
-                    test.ok(true, 'This promise should be rejected');
-                });
+            .fail(function() {
+                test.ok(true, 'This promise should be rejected');
+            });
                 
         var $p = ass.promise();
         
@@ -47,18 +47,37 @@ this.suite = {
         var ass = new AssLoad();
         
         ass.addImage('http://placehold.it/350x300')
-                .then(function() {
-                    test.ok(true, 'This promise should be resolved');
-                });
+            .then(function() {
+                test.ok(true, 'This promise should be resolved');
+            });
+            
         ass.addImage('http://placehold.404.it/350x300')
-                .fail(function() {
-                    test.ok(true, 'This promise should be rejected');
-                });
+            .fail(function() {
+                test.ok(true, 'This promise should be rejected');
+            });
         
         var $p = ass.promise();
         
         $.when($p).then(function() {
             test.done();
         });        
+    },
+    'Test Append': function(test) {
+        test.expect(1);
+        
+        var ass = new AssLoad();
+        
+        ass.addImage('http://placehold.it/350x300')
+            .then(function($el) {
+                $el.attr('data-ass-test', 'on');
+                $(document.body).append($el);
+                test.equal($('img[data-ass-test="on"]').length, 1, 'Element should be in the DOM');
+            });
+            
+        var $p = ass.promise();
+        
+        $.when($p).then(function() {
+            test.done();
+        });
     }
 };
